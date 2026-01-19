@@ -1,0 +1,113 @@
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:black;height:100vh;overflow:hidden;font-family:Georgia;color:white}
+
+/* MENU */
+#menu{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;
+  justify-content:center;align-items:center;
+  gap:25px;z-index:10
+}
+button{
+  padding:15px 35px;font-size:18px;
+  border:none;border-radius:30px;
+  background:#ff4d6d;color:white;cursor:pointer
+}
+
+/* COHETE */
+.rocket{
+  width:90px;height:180px;background:white;
+  border-radius:45px 45px 20px 20px;
+  position:relative;box-shadow:0 0 20px #fff
+}
+.tip{
+  border-left:45px solid transparent;
+  border-right:45px solid transparent;
+  border-bottom:50px solid #ff4d6d;
+  position:absolute;top:-50px
+}
+.window{
+  width:50px;height:50px;background:#111;
+  border-radius:50%;position:absolute;
+  top:45px;left:50%;
+  transform:translateX(-50%);
+  overflow:hidden;border:3px solid #ff4d6d
+}
+.window img{width:100%}
+.fin{width:20px;height:40px;background:#ff4d6d;position:absolute;bottom:30px}
+.fin.left{left:-20px}
+.fin.right{right:-20px}
+.fire{
+  width:30px;height:50px;
+  background:radial-gradient(circle,#ffd700,#ff4500);
+  position:absolute;bottom:-50px;left:50%;
+  transform:translateX(-50%);
+  border-radius:50%;opacity:0
+}
+.launch{animation:fly 3s ease-in forwards}
+.launch .fire{opacity:1;animation:flicker .2s infinite alternate}
+@keyframes fly{to{transform:translateY(-120vh);opacity:0}}
+@keyframes flicker{to{height:60px}}
+
+/* ESCENA */
+#scene{position:absolute;inset:0;background:radial-gradient(circle,#020024,#000);display:none}
+#contador{position:absolute;top:20px;width:100%;text-align:center;font-size:30px}
+
+/* TIERRA REALISTA */
+.earth{
+  width:170px;height:170px;border-radius:50%;
+  background:
+    radial-gradient(circle at 30% 30%,#3fa9f5,#003),
+    radial-gradient(circle at 60% 50%,#2ecc71 20%,transparent 21%);
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%) scale(0);
+  box-shadow:0 0 40px #4facfe;
+  animation:appear 3s forwards;
+}
+.clouds{
+  position:absolute;inset:0;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,255,255,.2),transparent);
+  animation:spin 20s linear infinite;
+}
+@keyframes appear{to{transform:translate(-50%,-50%) scale(1)}}
+
+/* ORBITAS */
+.orbit{
+  position:absolute;top:50%;left:50%;
+  border:1px dashed rgba(255,255,255,.15);
+  border-radius:50%;
+  animation:spin linear infinite
+}
+.o1{width:230px;height:230px;animation-duration:6s}
+.o2{width:310px;height:310px;animation-duration:9s}
+.o3{width:390px;height:390px;animation-duration:12s}
+.o4{width:470px;height:470px;animation-duration:15s}
+.planet{
+  position:absolute;top:-10px;left:50%;
+  transform:translateX(-50%);
+  background:white;color:black;
+  padding:6px 14px;border-radius:20px;font-size:13px
+}
+@keyframes spin{
+  from{transform:translate(-50%,-50%) rotate(0deg)}
+  to{transform:translate(-50%,-50%) rotate(360deg)}
+}
+
+/* FINAL */
+#final{position:absolute;inset:0;background:black;display:none;overflow:hidden}
+.credits{
+  position:absolute;bottom:-100%;
+  width:100%;text-align:center;
+  animation:credits 14s linear forwards
+}
+.credits p{margin:18px 0;font-size:24px}
+.credits .big{font-size:42px;color:#ff4d6d}
+@keyframes credits{to{bottom:35%}}
+
+/* CORAZONES */
+.heart,.snoopy-float{
+  position:absolute;animation:fall linear forwards
+}
+@keyframes fall{
+  to{transform:translateY(110vh);opacity:0}
+}
